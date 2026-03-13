@@ -70,4 +70,5 @@ dist/
 build/
 
 # Large video files (exceed GitHub 100MB limit)
-public/video/*.mp4
+public/video/DyslexiaHub.mp4
+public/video/SkillGapAnalysis.mp4
