@@ -114,6 +114,20 @@ nav ul {
   align-items: center;
 }
 
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.menu-toggle:hover {
+  color: var(--primary);
+}
+
 nav ul li a {
   text-decoration: none;
   color: var(--text-dim);
@@ -966,23 +980,61 @@ footer {
 
 @media (max-width: 768px) {
   nav .container {
-    flex-direction: column;
-    gap: 12px;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 0 20px;
   }
-  nav ul { 
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
-    gap: 8px; 
-    flex-wrap: nowrap; 
-    justify-content: flex-start; 
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 4px;
+    flex-direction: column;
+    background: var(--nav-bg);
+    padding: 20px;
+    border-bottom: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    gap: 12px;
+    box-shadow: var(--shadow);
+    /* Hide by default using clip-path for smooth dropdown */
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.35s ease-out;
+    z-index: 999;
   }
-  nav ul::-webkit-scrollbar {
-    display: none;
+
+  nav ul.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 1;
+    pointer-events: auto;
   }
-  nav ul li { flex-shrink: 0; }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+  }
+
+  .theme-toggle {
+    margin: 8px auto 0;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
   
   .section-title { font-size: 2rem; }
   .hero-content h1 { font-size: 2.2rem; }
