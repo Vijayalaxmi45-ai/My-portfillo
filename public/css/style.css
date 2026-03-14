@@ -220,6 +220,10 @@ nav ul li a.active {
   transform: translateY(-2px);
 }
 
+.btn:active, .social-link:active {
+  transform: scale(0.95) !important;
+}
+
 /* ----- Hero (index / homepage) ----- */
 .hero {
   min-height: 75vh;
@@ -452,7 +456,7 @@ ul.list li::before {
 /* ----- Projects grid ----- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   margin-top: 24px;
   padding-bottom: 48px;
@@ -520,7 +524,7 @@ ul.list li::before {
 /* ----- Certificates grid ----- */
 .certificates-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin-top: 24px;
   padding-bottom: 48px;
@@ -944,8 +948,7 @@ footer {
 
 /* ----- Responsive ----- */
 @media (max-width: 1200px) {
-  .projects-grid { grid-template-columns: repeat(2, 1fr); }
-  .certificates-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Let auto-fit handle the grids automatically */
 }
 
 @media (max-width: 992px) {
@@ -959,19 +962,33 @@ footer {
   .about-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .contact-page .contact-grid { grid-template-columns: 1fr; }
-  .projects-grid { grid-template-columns: repeat(2, 1fr); }
-  .certificates-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .section-title { font-size: 1.5rem; }
-  nav ul { gap: 4px; flex-wrap: wrap; justify-content: center; }
-  .hero-content h1 { font-size: 1.5rem; }
-  .hero-no-image .hero-content h1 { font-size: 1.5rem; }
+  nav .container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  nav ul { 
+    width: 100%;
+    gap: 8px; 
+    flex-wrap: nowrap; 
+    justify-content: flex-start; 
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  nav ul::-webkit-scrollbar {
+    display: none;
+  }
+  nav ul li { flex-shrink: 0; }
+  
+  .section-title { font-size: 2rem; }
+  .hero-content h1 { font-size: 2.2rem; }
+  .hero-no-image .hero-content h1 { font-size: 2rem; }
   .card-content { padding: 16px; }
-  .projects-grid,
-  .certificates-grid { grid-template-columns: 1fr; }
-  .projects-grid .card-img-wrapper { height: 140px; }
+  .projects-grid .card-img-wrapper { height: 180px; }
   .contact-page .contact-grid { margin-bottom: 48px; }
   .form-row { grid-template-columns: 1fr; }
 }
@@ -981,6 +998,9 @@ footer {
   .hero-buttons .btn { width: 100%; }
   .card-actions { flex-direction: column; }
   .card-actions .btn { width: 100%; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .certificates-grid { grid-template-columns: 1fr; }
+  .certificates-grid .card img { height: auto; aspect-ratio: 4/3; }
 }
 
 /* ----- Certificate Image Modal ----- */
