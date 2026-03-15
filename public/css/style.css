@@ -354,6 +354,9 @@ nav ul li a.active {
   padding: 22px;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card:hover,
