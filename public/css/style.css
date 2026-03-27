@@ -3,21 +3,21 @@
 
 :root {
   /* Professional color palette */
-  --primary: #e67e22;
-  --primary-rgb: 230, 126, 34;
-  --secondary: #3498db;
-  --secondary-rgb: 52, 152, 219;
-  --bg: #0a0a0f;
-  --bg-secondary: #12121a;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.09);
-  --text: #f2f2f2;
-  --text-dim: #a1a1aa;
-  --accent-gradient: linear-gradient(135deg, #e67e22, #c0392b);
-  --secondary-gradient: linear-gradient(135deg, #3498db, #2980b9);
-  --nav-bg: rgba(10, 10, 15, 0.94);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
-  --shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.4);
+  --primary: #2563eb;
+  --primary-rgb: 37, 99, 235;
+  --secondary: #38bdf8;
+  --secondary-rgb: 56, 189, 248;
+  --bg: #0f172a;
+  --bg-secondary: #1e293b;
+  --card-bg: rgba(30, 41, 59, 0.4);
+  --glass-border: rgba(148, 163, 184, 0.15);
+  --text: #e5e7eb;
+  --text-dim: #94a3b8;
+  --accent-gradient: linear-gradient(135deg, #2563eb, #38bdf8);
+  --secondary-gradient: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  --nav-bg: rgba(15, 23, 42, 0.94);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.6);
   /* Typography */
   --text-base: 0.8125rem;
   --text-sm: 0.75rem;
