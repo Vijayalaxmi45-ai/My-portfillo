@@ -75,6 +75,11 @@ main.container {
 }
 
 /* ----- Navigation (same on all pages) ----- */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 nav {
   position: sticky;
   top: 0;
@@ -84,6 +89,7 @@ nav {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--glass-border);
   padding: 12px 0;
+  animation: fadeInDown 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 nav .container {
@@ -103,8 +109,16 @@ nav .container {
 }
 
 .logo i {
-  color: var(--primary);
-  font-size: 1.1em;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.3em;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover i {
+  transform: rotate(15deg) scale(1.1);
 }
 
 nav ul {
@@ -133,15 +147,34 @@ nav ul li a {
   color: var(--text-dim);
   font-weight: 500;
   font-size: var(--nav-font);
-  padding: 6px 12px;
-  border-radius: 8px;
-  transition: all 0.25s ease;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
   color: var(--text);
   background: var(--card-bg);
+  transform: translateY(-2px);
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 60%;
 }
 
 nav ul li a.active {
@@ -219,19 +252,23 @@ nav ul li a.active {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.35);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.4);
 }
 
 .btn-secondary {
   background: var(--card-bg);
   color: var(--text);
   border: 1px solid var(--glass-border);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary:hover {
-  background: var(--glass-border);
-  transform: translateY(-2px);
+  background: rgba(var(--secondary-rgb), 0.1);
+  border-color: var(--secondary);
+  color: var(--secondary);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(var(--secondary-rgb), 0.2);
 }
 
 .btn:active, .social-link:active {
@@ -240,12 +277,14 @@ nav ul li a.active {
 
 /* ----- Hero (index / homepage) ----- */
 .hero {
-  min-height: 75vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 48px;
   padding: 40px 0 56px;
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
 }
 
 /* Index page: hero without image - content centered, full width */
@@ -362,10 +401,53 @@ nav ul li a.active {
 .card:hover,
 .info-card:hover,
 .attr-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(var(--primary-rgb), 0.7);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3), 0 12px 36px rgba(var(--primary-rgb), 0.2);
 }
+
+/* Add load animations layout-wide */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+main section,
+.card,
+.attr-card,
+.contact-info-card,
+.contact-form-wrapper {
+  animation: fadeInUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0; /* Ensures it's invisible before animation starts */
+}
+
+/* Staggered animation delays for items in grid */
+.attributes-grid .attr-card:nth-child(1),
+.projects-grid .card:nth-child(1),
+.about-grid .card:nth-child(1),
+.certificates-grid .card:nth-child(1) { animation-delay: 0.1s; }
+
+.attributes-grid .attr-card:nth-child(2),
+.projects-grid .card:nth-child(2),
+.about-grid .card:nth-child(2),
+.certificates-grid .card:nth-child(2) { animation-delay: 0.2s; }
+
+.attributes-grid .attr-card:nth-child(3),
+.projects-grid .card:nth-child(3),
+.about-grid .card:nth-child(3),
+.certificates-grid .card:nth-child(3) { animation-delay: 0.3s; }
+
+.projects-grid .card:nth-child(4),
+.about-grid .card:nth-child(4),
+.certificates-grid .card:nth-child(4) { animation-delay: 0.4s; }
+
+.projects-grid .card:nth-child(5),
+.about-grid .card:nth-child(5),
+.certificates-grid .card:nth-child(5) { animation-delay: 0.5s; }
+
+.projects-grid .card:nth-child(6),
+.about-grid .card:nth-child(6),
+.certificates-grid .card:nth-child(6) { animation-delay: 0.6s; }
 
 .card h2,
 .info-card h3 {
