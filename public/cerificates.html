@@ -180,59 +180,6 @@
     </div>
   </footer>
 
-  <script>
-    // Theme toggle
-    const themeBtn = document.getElementById('themeBtn');
-    const html = document.documentElement;
-    function toggleTheme() {
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', newTheme);
-      themeBtn.querySelector('i').className = newTheme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
-      localStorage.setItem('theme', newTheme);
-    }
-    themeBtn.addEventListener('click', toggleTheme);
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    html.setAttribute('data-theme', savedTheme);
-    themeBtn.querySelector('i').className = savedTheme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
-
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.querySelector('nav ul');
-    if(menuToggle) {
-      menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        const menuIcon = menuToggle.querySelector('i');
-        menuIcon.classList.toggle('bi-list');
-        menuIcon.classList.toggle('bi-x');
-      });
-    }
-
-    // Image Modal Logic
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImg');
-    const captionText = document.getElementById('modal-caption');
-    const closeBtn = document.getElementsByClassName('close-modal')[0];
-    const certificates = document.querySelectorAll('.certificates-grid .card img');
-
-    certificates.forEach(img => {
-      img.addEventListener('click', function () {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-        captionText.innerHTML = this.alt;
-      });
-    });
-
-    closeBtn.onclick = function () {
-      modal.style.display = "none";
-    }
-
-    // Close when clicking outside the image
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
-
 </html>

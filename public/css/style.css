@@ -17,7 +17,8 @@
   --secondary-gradient: linear-gradient(135deg, #22c55e, #10b981);
   --nav-bg: rgba(248, 250, 252, 0.94);
   --shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-  --shadow-hover: 0 10px 24px rgba(15, 23, 42, 0.12);
+  --shadow-hover: 0 10px 30px rgba(15, 23, 42, 0.15);
+  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   /* Typography */
   --text-base: 0.8125rem;
   --text-sm: 0.75rem;
@@ -68,10 +69,71 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.55;
+  line-height: 1.6;
   font-size: var(--text-base);
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: none; /* Hide default cursor for custom cursor */
+}
+
+/* ----- Custom Scrollbar ----- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ----- Progress Bar ----- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--accent-gradient);
+  z-index: 2001;
+  transition: width 0.1s ease;
+}
+
+/* ----- Custom Cursor ----- */
+.cursor {
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease, background-color 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-follower {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease, border-color 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.cursor.active { transform: translate(-50%, -50%) scale(2.5); background-color: rgba(var(--primary-rgb), 0.2); }
+.cursor-follower.active { transform: translate(-50%, -50%) scale(1.5); border-color: var(--secondary); }
+
+@media (max-width: 992px) {
+  body { cursor: auto; }
+  .cursor, .cursor-follower { display: none; }
 }
 
 /* ----- Layout ----- */
@@ -413,9 +475,10 @@ nav ul li a.active {
 .card:hover,
 .info-card:hover,
 .attr-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  border-color: rgba(var(--primary-rgb), 0.7);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3), 0 12px 36px rgba(var(--primary-rgb), 0.2);
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-hover);
+  background: var(--bg-secondary);
 }
 
 /* Add load animations layout-wide */
