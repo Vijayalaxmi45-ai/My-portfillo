@@ -111,7 +111,7 @@ h1, h2, h3 {
   letter-spacing: -0.02em;
 }
 
-span {
+h1 span, h2 span, .logo span {
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
