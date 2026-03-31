@@ -37,6 +37,15 @@
   --nav-bg: rgba(13, 17, 23, 0.8);
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   --shadow-hover: 0 16px 48px rgba(10, 132, 255, 0.2);
+  --tag-bg: rgba(10, 132, 255, 0.15);
+  --tag-text: #64d2ff;
+  --tag-border: rgba(10, 132, 255, 0.3);
+}
+
+[data-theme="light"] {
+  --tag-bg: #f8fbff;
+  --tag-text: #1d1d1f;
+  --tag-border: rgba(226, 232, 240, 0.8);
 }
 
 * {
@@ -471,12 +480,12 @@ nav ul {
 
 .tag {
   padding: 6px 14px;
-  background: var(--bg-alt);
-  border: 1px solid var(--glass-border);
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
   border-radius: 10px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--tag-text);
   transition: var(--transition);
 }
 
