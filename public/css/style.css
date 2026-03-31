@@ -570,11 +570,10 @@ nav ul {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--primary);
-  background: rgba(10, 132, 255, 0.1);
+  color: white;
+  background: var(--primary);
   padding: 4px 10px;
   border-radius: 6px;
-  -webkit-text-fill-color: var(--primary);
 }
 
 .project-links {
