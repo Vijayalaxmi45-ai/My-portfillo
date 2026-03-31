@@ -780,27 +780,35 @@ nav ul {
 @media (max-width: 768px) {
   .projects-grid, .certificates-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px;
+    gap: 12px !important;
+    display: grid !important;
   }
   
+  .project-card, .cert-card {
+    margin-bottom: 0px !important;
+    height: auto !important;
+  }
+
   .project-info, .cert-info {
     padding: 12px;
   }
   
   .project-info h3, .cert-info h3 {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
   
-  .project-info p, .cert-info p, .project-tags {
-    display: none; /* Hide details on small grid to keep it clean */
+  .project-info p, .project-tags, .project-links {
+    display: none; /* Hide for cleaner grid view on mobile */
   }
 
   .project-img, .cert-img {
-    height: 120px;
+    height: 100px;
   }
 
   .section { padding: 60px 0; }
-  .hero-content h1 { font-size: 3rem; }
+  .hero-content h1 { font-size: 2.8rem; }
   
   .contact-links { grid-template-columns: 1fr; }
   
@@ -822,7 +830,7 @@ nav ul {
 
 /* Animations */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
